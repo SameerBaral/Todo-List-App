@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css">
+    
+
+    <style>
+        .delete{
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        
+        <div class="box-container">
+            <h3>To-Do List</h3>
+
+            <!-- <form class="text-container" onsubmit="handleSubmit(e)">
+                <input onchange="readInput(e)" type="text" placeholder="Write your tasks." id="inp-feild">
+                <button id="addBtn">Add</button>
+            </form> -->
+
+
+            <form class="text-container">
+                <input type="text" placeholder="Write your tasks." id="inp-feild">
+                <button id="addBtn">Add</button>
+            </form>
+            
+            <table>
+                <thead>
+                    <tr style="width: 550px; text-align :left;">
+                        <th style="width: 60%; margin-right: 150px;" >description</th>
+                        <th style="width: 20%; margin-left: 150px;">action</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <!--
+                    <tr>
+                        <td>js</td>
+                        <td>
+                            <i class="ri-delete-bin-line delete"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>css</td>
+                        <td>
+                            <i class="ri-delete-bin-line delete"></i>
+                        </td>
+                    </tr> -->
+                </tbody>
+                
+                
+            </table>
+
+        </div>
+
+        <!-- <ul class="result"></ul> -->
+        
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

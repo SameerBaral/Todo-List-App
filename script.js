@@ -1,35 +1,43 @@
-const inputElem = document.querySelector('input')
-const btn = document.querySelector('button')
-const form = document.querySelector('.text-container')
+const inputElem = document.querySelector('input');
+const btn = document.querySelector('button');
+const form = document.querySelector('.text-container');
 
-let isduplicate = false
 
 function handleSubmit(e){
     e.preventDefault();  
-    
     let inputText = inputElem.value;
-
+    
+    // when blank
     if(!inputText){
         alert("write a task");
         return;
     }
+    
+    const tbody = document.querySelector('tbody') ;
+    const allRows = tbody.querySelectorAll('tr');
+    let isduplicate = false;    //intial value 
 
-    // addTask(inputText);
-
-    if (isduplicate == true) {
-        alert("duplicate")
+    // loop over arr rows to find duplicate value
+    allRows.forEach((row)=>{       
+        const rowText = row.firstChild.textContent;   
+        
+        if(inputText  === rowText){
+            isduplicate = true;
+        }
+    })
+    
+    // add new task when no duplicate found
+    if (isduplicate) {
+        alert("task already exists");
+    }else{
+        addTask(inputText);
     }
-    else{
-        addTask(inputText);  // fun call
-    }
 
-
-    inputElem.value = "";
+    inputElem.value = "";  //clear input after adding task
 }
 
 
 function addTask(inputValue){
-    console.log(inputValue);
 
     const taskrow = document.createElement('tr');
     taskrow.innerHTML=`<td>${inputValue}</td>
@@ -37,54 +45,19 @@ function addTask(inputValue){
                             <i class="ri-delete-bin-line delete"></i>
                         </td>`
                         
-    const tbody = document.querySelector('tbody') 
+    const tbody = document.querySelector('tbody') ;
     tbody.appendChild(taskrow);
 
-   // --------------------------------------
-
-    console.log(tbody);
-
-    const trElem = tbody.querySelectorAll('tr')
-    console.log(trElem);
-
-    trElem.forEach((trVal)=>{
-        console.log(trVal);
-
-        // console.log(trVal.firstChild.textContent);
-
-        const alltrCont = trVal.firstChild.textContent;
-        // console.log(alltrCon);
-
-        
-    
-
-        if(alltrCont == inputValue){
-            // alert("already exist");
-            // return;
-
-            // console.log(inputValue);
-
-            isduplicate=true
-            
-        }
-
-    })
-
-    
-    // =====================================
-
     let deleteIcon =  taskrow.querySelector('.delete');   
-    deleteIcon.addEventListener('click', ()=> deleteTaskRow(taskrow))       // // //
+    deleteIcon.addEventListener('click', ()=> deleteTaskRow(taskrow));
 
 }
 
-// ========================
+
 
 function deleteTaskRow(row){  
     row.remove();
 }
-
-
 
 form.addEventListener('submit', handleSubmit);  
 
